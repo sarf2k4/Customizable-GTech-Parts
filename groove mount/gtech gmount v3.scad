@@ -1,27 +1,34 @@
 //author: Sarf2k4
 //This is under GNU v2 license
 
-//color([0.9,0.2,0.9])import("fastener servo.stl");
 //groove slot to align
-cylinder(d=8,h=15,$fn=8);
+//cylinder(d=8,h=15,$fn=8);
 
-//parameters
+//these are for x carriage, match these to your carriage
 mount_distance=15;
 mount_size=4;
 
+//type of extruder mount, 0-3
+//0 everything
+//1 fastener (4 screws)
+//2 Geeetech extruder plate
+//3 greg's wade (based on reloaded)
+mount=0;
+
+//scre size for groove mount lock
 lock_size=4;
 
+//screw size for fastener and mount
 fastener_size=4;
 servo=false;
 
-//top();
-//bottom();
-//gtechplate();
-//wademount();
-fastener();
-e3lock();
+translate ([0,80,0])top();
+bottom();
+translate ([0,-40,0])fastener();
+translate ([0,-100,0])e3lock();
 
-
+//uncomment this for servo mount, nothing special this one though
+//translate([0,-130,0])color([0.9,0.2,0.9])import("fastener servo.stl");
 
 module e3lock()
 {
@@ -39,22 +46,22 @@ translate([0.1,8.5,-3])cube([9.9,7,7]);
 
 module wademount()
 {
-//translate([-14,-6.3,0])rotate([90,0,90])color([0.9,0.2,0.9])import("jonaskuehling_gregs-wade-v3_groovemount.stl");
 translate([0,25,0])cylinder(d=4.5,h=15,$fn=50,center=true);
 translate([0,-25,0])cylinder(d=4.5,h=15,$fn=50,center=true);
 }
 
 module gtechplate()
 {
-//plate mount
-//translate([54.5,-255.5])color([0.9,0.9,0.9])import("gtech metal plate.stl");
 translate([4.5,-25.5,0])rotate([0,0,-2.15])cylinder(d=4.5,h=15,$fn=50,center=true);
 translate([4.5,23.5,0])rotate([0,0,0.45])cylinder(d=4.5,h=15,$fn=50,center=true);
 }
 
 module fastener()
 {
+difference()
+{
 if(servo){
+    
     difference()
     {
         union()
@@ -79,6 +86,7 @@ translate([2.5,-20,2])cylinder(r=fastener_size,h=15,$fn=6);
 translate([12.5,-20,2])cylinder(r=fastener_size,h=15,$fn=6);
 translate([-2.5,-30,2])cylinder(r=fastener_size,h=15,$fn=6);
 translate([7.5,-30,2])cylinder(r=fastener_size,h=15,$fn=6);
+}
 }
 
 module fastener_lock(){
