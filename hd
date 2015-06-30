@@ -1,0 +1,18 @@
+[33mcommit 5d2ef2d5bf7f8ebcdf0a0528216aeec110aab319[m
+Author: sarf2k4 <sarf2k4@users.noreply.github.com>
+Date:   Tue Jun 30 09:03:36 2015 +0800
+
+    Update README.md
+
+[1mdiff --git a/README.md b/README.md[m
+[1mindex e4435bf..0977326 100644[m
+[1m--- a/README.md[m
+[1m+++ b/README.md[m
+[36m@@ -1 +1,7 @@[m
+ # Customizable-GTech-Parts[m
+[32m+[m
+[32m+[m[32mThis is the openscad script for customizable prusa i3 based parts that is primarily based on Geeetech printed parts structure.[m
+[32m+[m
+[32m+[m[32mThe objective here is to make the parts able to be customized. Although this isn't a pure openscad script because of the "import", but you can pick your own screw size and distance (for mounting purposes)[m
+[32m+[m
+[32m+[m[32mAlso to develop a preset based  parts such as screw holes for Geeetech parts or hephaestos x-carriage, vanilla based screws, greg wade's extruder and probably others[m

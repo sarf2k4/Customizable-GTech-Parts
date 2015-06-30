@@ -1,29 +1,38 @@
 //author: Sarf2k4
-//This is under GNU v2 license
+//Under GNU v2 License
 
 //groove slot to align
 //cylinder(d=8,h=15,$fn=8);
 
-//these are for x carriage, match these to your carriage
-mount_distance=15;
-mount_size=4;
+//preset here, add more number for options
+//0 default to Geeetech
+//1 vanilla based
+preset=0;
+
+//fastener type to accommodate servo for auto bed leveling
+//true servo mount type
+//false no servo
+servo=false;
 
 //type of extruder mount, 0-3
 //0 everything
 //1 fastener (4 screws)
 //2 Geeetech extruder plate
-//3 greg's wade (based on reloaded)
+//3 greg's wade (based on reloaded version)
 mount=0;
 
-//scre size for groove mount lock
-lock_size=4;
+//copy and add more presets, don't change numbers before ';'
+{
+mount_distance= preset==1 ? 12:15;
+mount_size= preset==1 ? 3:4;
+mount_nut= preset==1 ? 50:6;
+lock_size= preset==1 ? 3:4;
+fastener_size= preset==1 ? 3:4;
+}
 
-//screw size for fastener and mount
-fastener_size=4;
-servo=false;
-
+//these are the items, comment/uncomment to your desire
 translate ([0,80,0])top();
-bottom();
+rotate([180,0,0])bottom();
 translate ([0,-40,0])fastener();
 translate ([0,-100,0])e3lock();
 
@@ -132,13 +141,13 @@ translate([-20,0+mount_distance,19.99])rotate([0,90,0])cylinder(d=mount_size+0.5
 translate([-20,0+mount_distance,28.58])rotate([0,90,0])cylinder(d=mount_size+0.5,h=20,$fn=50,center=true);
     
     //nut trap
-translate([-21.197,0-mount_distance,11.575])rotate([0,90,0])cylinder(r=mount_size,h=6,$fn=6);
-translate([-21.197,0-mount_distance,19.99])rotate([0,90,0])cylinder(r=mount_size,h=6,$fn=6);
-translate([-21.197,0-mount_distance,28.58])rotate([0,90,0])cylinder(r=mount_size,h=6,$fn=6);
+translate([-21.197,0-mount_distance,11.575])rotate([0,90,0])cylinder(r=mount_size,h=6,$fn=mount_nut);
+translate([-21.197,0-mount_distance,19.99])rotate([0,90,0])cylinder(r=mount_size,h=6,$fn=mount_nut);
+translate([-21.197,0-mount_distance,28.58])rotate([0,90,0])cylinder(r=mount_size,h=6,$fn=mount_nut);
 
-translate([-21.197,0+mount_distance,11.575])rotate([0,90,0])cylinder(r=mount_size,h=6,$fn=6);
-translate([-21.197,0+mount_distance,19.99])rotate([0,90,0])cylinder(r=mount_size,h=6,$fn=6);
-translate([-21.197,0+mount_distance,28.58])rotate([0,90,0])cylinder(r=mount_size,h=6,$fn=6);
+translate([-21.197,0+mount_distance,11.575])rotate([0,90,0])cylinder(r=mount_size,h=6,$fn=mount_nut);
+translate([-21.197,0+mount_distance,19.99])rotate([0,90,0])cylinder(r=mount_size,h=6,$fn=mount_nut);
+translate([-21.197,0+mount_distance,28.58])rotate([0,90,0])cylinder(r=mount_size,h=6,$fn=mount_nut);
 }
 groovelock();
 
@@ -183,13 +192,13 @@ translate([-20,0+mount_distance,-20.008])rotate([0,90,0])cylinder(d=mount_size+0
 translate([-20,0+mount_distance,-28.428])rotate([0,90,0])cylinder(d=mount_size+0.5,h=20,$fn=50,center=true);
     
     //nut trap
-translate([-21.197,0-mount_distance,-11.423])rotate([0,90,0])cylinder(r=mount_size,h=6,$fn=6);
-translate([-21.197,0-mount_distance,-20.008])rotate([0,90,0])cylinder(r=mount_size,h=6,$fn=6);
-translate([-21.197,0-mount_distance,-28.428])rotate([0,90,0])cylinder(r=mount_size,h=6,$fn=6);
+translate([-21.197,0-mount_distance,-11.423])rotate([0,90,0])cylinder(r=mount_size,h=6,$fn=mount_nut);
+translate([-21.197,0-mount_distance,-20.008])rotate([0,90,0])cylinder(r=mount_size,h=6,$fn=mount_nut);
+translate([-21.197,0-mount_distance,-28.428])rotate([0,90,0])cylinder(r=mount_size,h=6,$fn=mount_nut);
     
-translate([-21.197,0+mount_distance,-11.423])rotate([0,90,0])cylinder(r=mount_size,h=6,$fn=6);
-translate([-21.197,0+mount_distance,-20.008])rotate([0,90,0])cylinder(r=mount_size,h=6,$fn=6);
-translate([-21.197,0+mount_distance,-28.428])rotate([0,90,0])cylinder(r=mount_size,h=6,$fn=6);
+translate([-21.197,0+mount_distance,-11.423])rotate([0,90,0])cylinder(r=mount_size,h=6,$fn=mount_nut);
+translate([-21.197,0+mount_distance,-20.008])rotate([0,90,0])cylinder(r=mount_size,h=6,$fn=mount_nut);
+translate([-21.197,0+mount_distance,-28.428])rotate([0,90,0])cylinder(r=mount_size,h=6,$fn=mount_nut);
 }
 
 groovelock();

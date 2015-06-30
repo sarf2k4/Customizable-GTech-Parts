@@ -1,16 +1,18 @@
-
-//pick your type here
-//1 = vanilla
-//default = Geeetech
-type =1;
+//author: Sarf2k4
+//Under GNU v2 License
 
 
-screwdist= type==1 ? 12:15;
-screwsize= type==1 ? 3.5:4.5;
-screwface= type==1 ? 50:50;
-slotsize= type==1 ? 6:8;
-slotface= type==1 ? 6:50;
+//pick your presets here
+//0 Geeetech
+//1 vanilla
+preset =1;
 
+//copy and add more presets, don't change numbers before ';'
+{
+screwdist= preset==1 ? 12:15;
+screwsize= preset==1 ? 3:4;
+slotface= preset==1 ? 6:50;
+}
 
 //geeetech x carriage
 difference(){
@@ -25,11 +27,11 @@ translate([28.3+13,35.1,8.25])color([0.5,0.5,0.5])cube([22,12,16.5],center=true)
 //geeetech
 {
 //small screw holes
-translate([28.3-screwdist,34.5,-1])color([0.5,0.9,0.2])cylinder(d=screwsize, h=20, $fn=screwface);
-translate([28.3+screwdist,34.5,-1])cylinder(d=screwsize, h=20, $fn=screwface);
+translate([28.3-screwdist,34.5,-1])color([0.5,0.9,0.2])cylinder(d=screwsize+0.5, h=20, $fn=50);
+translate([28.3+screwdist,34.5,-1])cylinder(d=screwsize+0.5, h=20, $fn=50);
 //large screw holes
-translate([28.3-screwdist,34.5,7])color([0.5,0.9,0.2])cylinder(d=slotsize, h=20, $fn=slotface);
-translate([28.3+screwdist,34.5,7])color([0.5,0.9,0.2])cylinder(d=slotsize, h=20, $fn=slotface);
+translate([28.3-screwdist,34.5,7])color([0.5,0.9,0.2])cylinder(r=screwsize, h=20, $fn=slotface);
+translate([28.3+screwdist,34.5,7])color([0.5,0.9,0.2])cylinder(r=screwsize, h=20, $fn=slotface);
 }
 
 
