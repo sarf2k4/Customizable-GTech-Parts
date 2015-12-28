@@ -19,7 +19,7 @@ servo=false;
 //1 fastener (4 screws)
 //2 Geeetech extruder plate
 //3 greg's wade (based on reloaded version)
-mount=0;
+mount=1;
 
 //copy and add more presets, don't change numbers before ';'
 {
@@ -85,7 +85,7 @@ else
 {
     union()
     {
-    translate([52.5,-45,0])color([0.5,0.2,0.8])import("gtech gmount v2 extruder.stl");
+    translate([52.5,-45,0])color([0.5,0.2,0.8])import("exfastener.stl");
     translate([-7,-35,0])cube([25,20,10]);
     }
 }
@@ -111,15 +111,28 @@ translate([0,0-11.6,0])rotate([90,0,90])cylinder(d=lock_size+0.5,h=60,$fn=50,cen
 translate([0,0+11.6,0])rotate([90,0,90])cylinder(d=lock_size+0.5,h=60,$fn=50,center=true);
 
 //nut
-translate([-4.5,0-11.6,0])rotate([270,90,90])cylinder(r=lock_size,h=30,$fn=6);
-translate([-4.5,0+11.6,0])rotate([270,90,90])cylinder(r=lock_size,h=30,$fn=6);
+//translate([-4.5,0-11.6,10])cube([8,5,3]);
+//translate([-4.5,0-11.6,0])rotate([270,90,90])cylinder(r=lock_size,h=5,$fn=6);
+//translate([-4.5,0+11.6,0])rotate([270,90,90])cylinder(r=lock_size,h=30,$fn=6);
+    
+    hull()
+{
+translate([-9.5-3,-3.46-11.6,5])color("pink")cube([5,lock_size+2.925,6]);
+translate([-4.5-3,0-11.6,0])rotate([270,90,90])color("purple")cylinder(r=lock_size,h=5,$fn=6);
 }
+hull()
+{
+translate([-9.5-3,-3.46+11.6,5])color("pink")cube([5,lock_size+2.925,6]);
+translate([-4.5-3,0+11.6,0])rotate([270,90,90])color("purple")cylinder(r=lock_size,h=5,$fn=6);
+}
+}
+
 
 module top(){
 difference()
 {
 union(){
-translate([52.5,-165,6.5])color([0.9,0.2,0.1])import("gtech gmount v2 top.stl");
+translate([52.5,-165,6.5])color([0.9,0.2,0.1])import("top.stl");
 
 translate([-27.5,-18.1,-5])cube([27.5,10,10]);
 translate([-27.5,8.1,-5])cube([27.5,10,10]);
@@ -173,7 +186,7 @@ difference()
 {
 union()
 {
-translate([52.5,55,-6.5])color([0.1,0.2,0.9])import("gtech gmount v2 bottom.stl");
+translate([52.5,55,-6.5])color([0.1,0.2,0.9])import("bottom.stl");
 translate([-5,-32.5,-6.5])cube([20,14.79,13]);
 translate([-27.5,-18.5,-33.5])cube([10.29,37,40]);
 translate([-27.5,-18.1,-5])cube([27.5,10,10]);
